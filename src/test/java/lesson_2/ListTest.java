@@ -1,3 +1,5 @@
+package lesson_2;
+
 import lesson_2.MyArraylist;
 import org.junit.Before;
 import org.junit.Test;

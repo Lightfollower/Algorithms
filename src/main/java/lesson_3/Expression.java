@@ -1,4 +1,4 @@
-package lesson3;
+package lesson_3;
 
 public class Expression {
     private String exp;

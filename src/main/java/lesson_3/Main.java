@@ -1,4 +1,4 @@
-package lesson3;
+package lesson_3;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,19 +22,40 @@ public class Main {
 //            queue.insert(i);
 //        }
 //        for (int i = 0; i < 5; i++) {
-//            System.out.println(queue.remove());
+//            System.out.print(queue.remove()+ " ");
 //        }
 
-        MyPriorityQueue<Integer> mpq = new MyPriorityQueue<>();
-        mpq.insert(7);
-        System.out.println(mpq);
-        mpq.insert(3);
-        System.out.println(mpq);
-        mpq.insert(4);
-        System.out.println(mpq);
-        mpq.insert(2);
-        System.out.println(mpq);
-        System.out.println(mpq.remove());
-        System.out.println(mpq);
+        System.out.println();
+        MyDeque<Integer> dqueue = new MyDeque<>(5);
+        for (int i = 0; i < 5; i++) {
+            dqueue.insertLeft(i);
+        }
+        System.out.println();
+        for (int i = 0; i < 3; i++) {
+            System.out.print(dqueue.removeLeft() + " ");
+        }
+        System.out.println();
+        System.out.println();
+        for (int i = 0; i < 2; i++) {
+            dqueue.insertRight(i+10);
+        }
+        System.out.println();
+        System.out.println();
+        for (int i = 0; i < 4; i++) {
+            System.out.print(dqueue.removeLeft() + " ");
+        }
+
+
+//        MyPriorityQueue<Integer> mpq = new MyPriorityQueue<>();
+//        mpq.insert(7);
+//        System.out.println(mpq);
+//        mpq.insert(3);
+//        System.out.println(mpq);
+//        mpq.insert(4);
+//        System.out.println(mpq);
+//        mpq.insert(2);
+//        System.out.println(mpq);
+//        System.out.println(mpq.remove());
+//        System.out.println(mpq);
     }
 }
