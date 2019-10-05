@@ -36,7 +36,7 @@ public class MyLinkedList<Item> implements Iterable<Item> {
 
     private class ListIter implements ListIterator<Item> {
         private Node current = new Node(null, first);
-        private int index = 0;
+        private int index = -1;
 
         @Override
         public boolean hasNext() {
@@ -75,9 +75,17 @@ public class MyLinkedList<Item> implements Iterable<Item> {
 
         @Override
         public void remove() {
+            Node currentAfterRemoval;
+            if (index < 0)
+                throw new IndexOutOfBoundsException();
+            if ((index == 0)) {
+                currentAfterRemoval = new Node(null, first.getNext());
+            } else {
+                currentAfterRemoval = current.getPrevious();
+            }
+            index--;
             MyLinkedList.this.remove((Item) current.getValue());
-            if (hasPrevious())
-                previous();
+            current = currentAfterRemoval;
         }
 
         @Override
@@ -87,7 +95,7 @@ public class MyLinkedList<Item> implements Iterable<Item> {
 
         @Override
         public void add(Item item) {
-            MyLinkedList.this.insert(item, index - 1);
+            MyLinkedList.this.insert(item, index + 1);
         }
     }
 

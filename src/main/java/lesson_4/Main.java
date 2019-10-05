@@ -30,17 +30,30 @@ public class Main {
         }
 
         System.out.println();
-        ListIterator<String> iterator = (ListIterator)mll.iterator();
+        ListIterator<String> iterator = (ListIterator) mll.iterator();
+
+        System.out.println(iterator.next());
 
         System.out.println(iterator.next());
         iterator.remove();
 
         System.out.println(iterator.next());
+
+
+//        System.out.println(iterator.next());
+        System.out.println(iterator.nextIndex());
         iterator.add("ololosha");
-        iterator.remove();
-        System.out.println(iterator.next());
 
-        iterator.next() ;
+//        System.out.println(iterator.nextIndex());
+//        iterator.remove();
+//        System.out.println(iterator.nextIndex());
+        System.out.println(iterator.next());
+        System.out.println(iterator.nextIndex());
+        System.out.println(iterator.next());
+        System.out.println(iterator.previous());
+
+
+//        iterator.next() ;
 //        iterator.remove();
 
         for (String s : mll) {
