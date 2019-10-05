@@ -1,6 +1,7 @@
 package lesson_4;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 
 public class MyLinkedList<Item> implements Iterable<Item> {
     private Node first;
@@ -14,11 +15,13 @@ public class MyLinkedList<Item> implements Iterable<Item> {
 
     @Override
     public Iterator<Item> iterator() {
-        return new Iter();
+        return new ListIter();
     }
 
-    private class Iter implements Iterator<Item>{
-        Node current = new Node(null,first);
+
+    private class Iter implements Iterator<Item> {
+        Node current = new Node(null, first);
+
         @Override
         public boolean hasNext() {
             return current.getNext() != null;
@@ -31,7 +34,64 @@ public class MyLinkedList<Item> implements Iterable<Item> {
         }
     }
 
-    class Node<Item> {
+    private class ListIter implements ListIterator<Item> {
+        private Node current = new Node(null, first);
+        private int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return current.getNext() != null;
+        }
+
+        @Override
+        public Item next() {
+            current = current.next;
+            index++;
+            return (Item) current.getValue();
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return current.getPrevious() != null;
+        }
+
+        @Override
+        public Item previous() {
+            current = current.previous;
+            index--;
+            return (Item) current.getValue();
+        }
+
+        //возвращается -1, если выходим за пределы листа.
+        @Override
+        public int nextIndex() {
+            return (index == size) ? -1 : index + 1;
+        }
+
+        @Override
+        public int previousIndex() {
+            return index - 1;
+        }
+
+        @Override
+        public void remove() {
+            MyLinkedList.this.remove((Item) current.getValue());
+            if (hasPrevious())
+                previous();
+        }
+
+        @Override
+        public void set(Item item) {
+            current.setValue(item);
+        }
+
+        @Override
+        public void add(Item item) {
+            MyLinkedList.this.insert(item, index - 1);
+        }
+    }
+
+    private class Node<Item> {
         private Item value;
         private Node next;
         private Node previous;
@@ -139,11 +199,10 @@ public class MyLinkedList<Item> implements Iterable<Item> {
             index = size;
         }
         Node current = first;
-        int i = 0;
-        while (i < index - 1) {
+        for (int i = 0; i < index - 1; i++) {
             current = current.next;
-            i++;
         }
+
         Node newNode = new Node(item);
         newNode.setNext(current.next);
         newNode.setPrevious(current);
@@ -168,7 +227,7 @@ public class MyLinkedList<Item> implements Iterable<Item> {
         if (current == null) {
             return false;
         }
-        if(current == last){
+        if (current == last) {
             removeLast();
             return true;
         }
