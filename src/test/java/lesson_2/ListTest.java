@@ -1,4 +1,4 @@
-import lesson2.MyArraylist;
+import lesson_2.MyArraylist;
 import org.junit.Before;
 import org.junit.Test;
 
