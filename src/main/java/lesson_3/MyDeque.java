@@ -77,9 +77,7 @@ public class MyDeque<Item> {
     }
 
     private int previousIndex(int index) {
-        if (index == 0)
-            return list.length - 1;
-        return (index - 1);
+        return (list.length + index - 1) % list.length;
     }
 
     public int size() {
