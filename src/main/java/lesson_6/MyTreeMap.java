@@ -169,6 +169,7 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
 
         }
         node.size = size(node.left) + size(node.right) + 1;
+        node.depth = Math.max(depth(node.left), depth(node.right)) + 1;
         return node;
     }
 
