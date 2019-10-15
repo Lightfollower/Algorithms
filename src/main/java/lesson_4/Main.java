@@ -31,7 +31,6 @@ public class Main {
 
         System.out.println();
         ListIterator<String> iterator = (ListIterator) mll.iterator();
-        ListIterator<String> iterator = mll.;
 
         System.out.println(iterator.next());
 
