@@ -34,6 +34,8 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
         if (node == null) {
             return 0;
         }
+        if(node.left == null && node.right == null)
+            return 0;
         return node.depth;
 
     }
