@@ -3,7 +3,7 @@ package lesson_7;
 public class Main {
     public static void main(String[] args) {
         Graph graph = new Graph(10);
-        
+
         graph.addEdge(0, 1);
         graph.addEdge(2, 1);
         graph.addEdge(0, 7);
