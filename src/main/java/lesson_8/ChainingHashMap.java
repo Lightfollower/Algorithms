@@ -44,7 +44,7 @@ public class ChainingHashMap<Key, Value> {
         return true;
     }
 
-    public boolean contains(Key key){
+    public boolean contains(Key key) {
         return get(key) != null;
     }
 
@@ -72,12 +72,23 @@ public class ChainingHashMap<Key, Value> {
         return null;
     }
 
+    public void delete(Key key) {
+        isKeyNotNull(key);
+        int i = hash(key);
+        for (int j = 0; j < st[i].size(); j++) {
+            if (key.equals(st[i].get(j).key)) {
+                st[i].remove(j);
+            }
+        }
+        size--;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < capacity; i++) {
             for (Node node : st[i]) {
-                sb.append(node.key + "=" + node.value+", ");
+                sb.append(node.key + "=" + node.value + ", ");
             }
             sb.append("\n");
         }
